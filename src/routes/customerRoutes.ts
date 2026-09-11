@@ -1,9 +1,10 @@
 import { Router } from "express";
-import postCustomer from "../controllers/customerController";
+import { getcustomers, postCustomer } from "../controllers/customerController";
 
 
 const customerRouter = Router();
 
-customerRouter.post("/", postCustomer); 
+customerRouter.post("/", postCustomer);
+customerRouter.get("/", getcustomers);
 
 export default customerRouter;

@@ -13,4 +13,15 @@ const createCustomer = async(name: string, email: string) =>{
     return result.rows[0]
   }
 
-  export default createCustomer
+  const getAllcustomers = async() =>{
+     const result = await pool.query(
+      `
+      select customer.id, customer.name, customer.email from customer
+      
+      
+      `
+     )
+     return result.rows
+  }
+
+  export { createCustomer, getAllcustomers }
