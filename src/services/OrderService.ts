@@ -15,4 +15,21 @@ const OrderService = async (
   return order.rows[0];
 };
 
-export default OrderService;
+const getAllOrders = async () => {
+       try{
+         const result = await pool.query(`
+          select * from orders
+          `)
+         return result.rows;
+       } 
+       catch (error) {
+          console.error("Error fetching orders:", error);
+         
+       }
+
+
+
+
+}
+
+export {OrderService, getAllOrders};

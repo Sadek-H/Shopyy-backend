@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import OrderService from "../services/OrderService";
+import {OrderService,getAllOrders} from "../services/OrderService";
+
 
 const orderControll = async (req: Request, res: Response) => {
   try {
@@ -23,4 +24,18 @@ const orderControll = async (req: Request, res: Response) => {
   }
 };
 
-export default orderControll;
+const getAllOrdersController = async (req: Request, res: Response) => {
+
+          try{
+            const orders = await getAllOrders();
+            res.status(200).json(orders);
+          }
+          catch (error) {
+            res.status(500).json({
+              message: "Error fetching orders"
+            });
+          }
+
+}
+
+export { orderControll, getAllOrdersController };
